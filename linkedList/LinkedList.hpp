@@ -126,9 +126,44 @@ bool LinkedList<T>::removeBack()
 	Node<T>* secondintoLast = nullptr;
 	bool isRemoved = false;
 
-	/** TODO 
-		Fix this method
-	*/
+	//Firstly, check the size of the list
+	//If the size of the list is 0, 
+	//then no node can be removed by the list
+	if(m_size == 0)
+	{
+		//Set isRemoved to be false
+		isRemoved = false;
+	}
+	//Otherwise, if the list is not empty
+	else
+	{
+		//Set isRemoved to be true
+		isRemoved = true;
+
+		//Next, set secondintoLast to be m_front
+		secondintoLast = m_front;
+
+		//Next, go through each node of the LinkedList
+		//until the program reaches the 2nd to last node
+		//starting from 1 and going to m_size-1
+		for(int i = 1; i < m_size-1; i++)
+		{
+			//Set secondintoLast to be the next node of the list
+			secondintoLast = secondintoLast->getNext();
+		}
+
+		//Next, set lastNode to be secnondintoLast's next node
+		lastNode = secondintoLast->getNext();
+
+		//Next, set secondintoLast's next node to be nullptr
+		secondintoLast->setNext(nullptr);
+
+		//Next, delete lastnode
+		delete lastNode;
+
+		//Finally, decrease m_size by 1
+		m_size--;
+	}
 
 	return(isRemoved);
 }	
