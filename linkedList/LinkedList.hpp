@@ -38,10 +38,35 @@ bool LinkedList<T>::search(T value) const
 {
 	Node<T>* temp = m_front;
 	bool isFound = false;
+	
+	//First, let create an integer that will chech the index of the current node
+	int index = 0;
 
-	/** TODO 
-		Fix this method
-	*/
+	//First, we loop until isFound is true or 
+	//we reach the end of the LinkedList
+	//which means that index must be greater than m_size
+	while(isFound == false && index < m_size)
+	{
+		//Next, get the entry of temp
+		T entry = temp->getValue();
+
+		//Next, check if the entry equals to the value
+		//If entry equals to the value
+		if(entry == value)
+		{
+			//Set isFound to be true and end the loop
+			isFound = true;
+		}
+		//Otherwise, if temp does not equal to value
+		else
+		{
+			//Set temp to be the next node in the list
+			temp = temp->getNext();
+
+			//Increase index by 1
+			index++;
+		}
+	}
 
 	return(isFound);
 }
